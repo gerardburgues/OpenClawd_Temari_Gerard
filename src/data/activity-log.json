@@ -1,0 +1,362 @@
+[
+  {
+    "id": "log-001",
+    "timestamp": "2026-02-08T15:30:05Z",
+    "agente_id": "censador",
+    "accion": "descubierta",
+    "oposicion_id": "opo-021",
+    "mensaje": "Nueva oposición descubierta: Administrativo JCyL (C1, Castilla y León)",
+    "tipo": "success"
+  },
+  {
+    "id": "log-002",
+    "timestamp": "2026-02-08T15:28:42Z",
+    "agente_id": "excavador",
+    "accion": "temario_completo",
+    "oposicion_id": "opo-010",
+    "mensaje": "Temario extraído: Policía Nacional — 45 temas",
+    "tipo": "success"
+  },
+  {
+    "id": "log-003",
+    "timestamp": "2026-02-08T15:26:18Z",
+    "agente_id": "decodificador",
+    "accion": "ley_verificada",
+    "oposicion_id": "opo-006",
+    "mensaje": "Ley verificada: Ley 39/2015 (LPAC) — actualizada en BOE",
+    "tipo": "success"
+  },
+  {
+    "id": "log-004",
+    "timestamp": "2026-02-08T15:24:55Z",
+    "agente_id": "arqueologo",
+    "accion": "examen_encontrado",
+    "oposicion_id": "opo-003",
+    "mensaje": "Examen encontrado: Gestión A.C. 2023 Modelo A",
+    "tipo": "success"
+  },
+  {
+    "id": "log-005",
+    "timestamp": "2026-02-08T15:22:30Z",
+    "agente_id": "censador",
+    "accion": "escaneo",
+    "oposicion_id": null,
+    "mensaje": "Portal del BOE escaneado, 0 nuevas oposiciones",
+    "tipo": "info"
+  },
+  {
+    "id": "log-006",
+    "timestamp": "2026-02-08T15:20:12Z",
+    "agente_id": "excavador",
+    "accion": "extraccion",
+    "oposicion_id": "opo-008",
+    "mensaje": "Parseando bases de Tramitación Procesal...",
+    "tipo": "info"
+  },
+  {
+    "id": "log-007",
+    "timestamp": "2026-02-08T15:18:45Z",
+    "agente_id": "decodificador",
+    "accion": "vinculacion",
+    "oposicion_id": "opo-006",
+    "mensaje": "3 leyes vinculadas al tema 15 de Inspector de Hacienda",
+    "tipo": "success"
+  },
+  {
+    "id": "log-008",
+    "timestamp": "2026-02-08T15:16:22Z",
+    "agente_id": "arqueologo",
+    "accion": "busqueda",
+    "oposicion_id": "opo-012",
+    "mensaje": "Buscando exámenes en portal de Junta de Andalucía...",
+    "tipo": "info"
+  },
+  {
+    "id": "log-009",
+    "timestamp": "2026-02-08T15:14:08Z",
+    "agente_id": "censador",
+    "accion": "descubierta",
+    "oposicion_id": "opo-020",
+    "mensaje": "Nueva oposición descubierta: Auxiliar Xunta de Galicia (C2)",
+    "tipo": "success"
+  },
+  {
+    "id": "log-010",
+    "timestamp": "2026-02-08T15:12:33Z",
+    "agente_id": "excavador",
+    "accion": "temario_completo",
+    "oposicion_id": "opo-013",
+    "mensaje": "Temario extraído: Auxiliar Administrativo JA — 28 temas",
+    "tipo": "success"
+  },
+  {
+    "id": "log-011",
+    "timestamp": "2026-02-08T15:10:15Z",
+    "agente_id": "decodificador",
+    "accion": "ley_verificada",
+    "oposicion_id": "opo-015",
+    "mensaje": "Ley verificada: Ley 40/2015 (LRJSP) — sin cambios",
+    "tipo": "success"
+  },
+  {
+    "id": "log-012",
+    "timestamp": "2026-02-08T15:08:42Z",
+    "agente_id": "arqueologo",
+    "accion": "examen_encontrado",
+    "oposicion_id": "opo-004",
+    "mensaje": "Examen encontrado: TAC 2024 Modelo B",
+    "tipo": "success"
+  },
+  {
+    "id": "log-013",
+    "timestamp": "2026-02-08T15:06:28Z",
+    "agente_id": "censador",
+    "accion": "escaneo",
+    "oposicion_id": null,
+    "mensaje": "Portal de CCAA escaneado: Cataluña, Valencia, Galicia",
+    "tipo": "info"
+  },
+  {
+    "id": "log-014",
+    "timestamp": "2026-02-08T15:04:10Z",
+    "agente_id": "excavador",
+    "accion": "error",
+    "oposicion_id": "opo-014",
+    "mensaje": "Error: Timeout al acceder a la web del SAS",
+    "tipo": "error"
+  },
+  {
+    "id": "log-015",
+    "timestamp": "2026-02-08T15:02:55Z",
+    "agente_id": "decodificador",
+    "accion": "vinculacion",
+    "oposicion_id": "opo-015",
+    "mensaje": "5 leyes vinculadas al tema 8 de Cos Superior Generalitat",
+    "tipo": "success"
+  },
+  {
+    "id": "log-016",
+    "timestamp": "2026-02-08T15:00:38Z",
+    "agente_id": "arqueologo",
+    "accion": "busqueda",
+    "oposicion_id": "opo-028",
+    "mensaje": "Sin resultados en portal del INAP para Profesor Ed. Secundaria",
+    "tipo": "warning"
+  },
+  {
+    "id": "log-017",
+    "timestamp": "2026-02-08T14:58:20Z",
+    "agente_id": "censador",
+    "accion": "descubierta",
+    "oposicion_id": "opo-016",
+    "mensaje": "Nueva oposición descubierta: Cos Administratiu Generalitat (C1)",
+    "tipo": "success"
+  },
+  {
+    "id": "log-018",
+    "timestamp": "2026-02-08T14:56:05Z",
+    "agente_id": "excavador",
+    "accion": "extraccion",
+    "oposicion_id": "opo-019",
+    "mensaje": "Parseando bases de Administrativo GVA...",
+    "tipo": "info"
+  },
+  {
+    "id": "log-019",
+    "timestamp": "2026-02-08T14:54:42Z",
+    "agente_id": "decodificador",
+    "accion": "ley_verificada",
+    "oposicion_id": "opo-027",
+    "mensaje": "Ley verificada: Constitución Española — sin cambios",
+    "tipo": "success"
+  },
+  {
+    "id": "log-020",
+    "timestamp": "2026-02-08T14:52:18Z",
+    "agente_id": "arqueologo",
+    "accion": "examen_encontrado",
+    "oposicion_id": "opo-012",
+    "mensaje": "Examen encontrado: Administrativo JA 2022 Modelo A",
+    "tipo": "success"
+  },
+  {
+    "id": "log-021",
+    "timestamp": "2026-02-08T14:50:33Z",
+    "agente_id": "censador",
+    "accion": "escaneo",
+    "oposicion_id": null,
+    "mensaje": "Portal de Madrid escaneado, 0 nuevas oposiciones",
+    "tipo": "info"
+  },
+  {
+    "id": "log-022",
+    "timestamp": "2026-02-08T14:48:15Z",
+    "agente_id": "excavador",
+    "accion": "temario_completo",
+    "oposicion_id": "opo-022",
+    "mensaje": "Temario extraído: Administrativo Gobierno Vasco — 32 temas",
+    "tipo": "success"
+  },
+  {
+    "id": "log-023",
+    "timestamp": "2026-02-08T14:46:50Z",
+    "agente_id": "decodificador",
+    "accion": "vinculacion",
+    "oposicion_id": "opo-027",
+    "mensaje": "4 leyes vinculadas al tema 12 de Maestro Ed. Primaria",
+    "tipo": "success"
+  },
+  {
+    "id": "log-024",
+    "timestamp": "2026-02-08T14:44:28Z",
+    "agente_id": "arqueologo",
+    "accion": "examen_encontrado",
+    "oposicion_id": "opo-028",
+    "mensaje": "Examen encontrado: Profesor Ed. Secundaria 2023",
+    "tipo": "success"
+  },
+  {
+    "id": "log-025",
+    "timestamp": "2026-02-08T14:42:10Z",
+    "agente_id": "censador",
+    "accion": "descubierta",
+    "oposicion_id": "opo-009",
+    "mensaje": "Nueva oposición descubierta: Auxilio Judicial (C2, MJUS)",
+    "tipo": "success"
+  },
+  {
+    "id": "log-026",
+    "timestamp": "2026-02-08T14:40:45Z",
+    "agente_id": "excavador",
+    "accion": "extraccion",
+    "oposicion_id": "opo-026",
+    "mensaje": "Parseando bases de Celador Sistema Nacional Salud...",
+    "tipo": "info"
+  },
+  {
+    "id": "log-027",
+    "timestamp": "2026-02-08T14:38:22Z",
+    "agente_id": "decodificador",
+    "accion": "ley_verificada",
+    "oposicion_id": "opo-006",
+    "mensaje": "Ley verificada: RDL 5/2015 (TREBEP) — sin cambios",
+    "tipo": "success"
+  },
+  {
+    "id": "log-028",
+    "timestamp": "2026-02-08T14:36:08Z",
+    "agente_id": "arqueologo",
+    "accion": "busqueda",
+    "oposicion_id": "opo-003",
+    "mensaje": "Buscando exámenes en archivo del INAP...",
+    "tipo": "info"
+  },
+  {
+    "id": "log-029",
+    "timestamp": "2026-02-08T14:34:55Z",
+    "agente_id": "censador",
+    "accion": "escaneo",
+    "oposicion_id": null,
+    "mensaje": "Portal del País Vasco escaneado, 0 nuevas oposiciones",
+    "tipo": "info"
+  },
+  {
+    "id": "log-030",
+    "timestamp": "2026-02-08T14:32:40Z",
+    "agente_id": "excavador",
+    "accion": "temario_completo",
+    "oposicion_id": "opo-025",
+    "mensaje": "Temario extraído: Enfermero Sistema Nacional Salud — 38 temas",
+    "tipo": "success"
+  },
+  {
+    "id": "log-031",
+    "timestamp": "2026-02-08T14:30:18Z",
+    "agente_id": "decodificador",
+    "accion": "vinculacion",
+    "oposicion_id": "opo-015",
+    "mensaje": "2 leyes vinculadas al tema 5 de Cos Superior Generalitat",
+    "tipo": "success"
+  },
+  {
+    "id": "log-032",
+    "timestamp": "2026-02-08T14:28:05Z",
+    "agente_id": "arqueologo",
+    "accion": "examen_encontrado",
+    "oposicion_id": "opo-003",
+    "mensaje": "Examen encontrado: Gestión A.C. 2024 Modelo A",
+    "tipo": "success"
+  },
+  {
+    "id": "log-033",
+    "timestamp": "2026-02-08T14:26:42Z",
+    "agente_id": "censador",
+    "accion": "descubierta",
+    "oposicion_id": "opo-011",
+    "mensaje": "Nueva oposición descubierta: Guardia Civil (C1, MINT)",
+    "tipo": "success"
+  },
+  {
+    "id": "log-034",
+    "timestamp": "2026-02-08T14:24:20Z",
+    "agente_id": "excavador",
+    "accion": "extraccion",
+    "oposicion_id": "opo-008",
+    "mensaje": "Extracción completada: Tramitación Procesal — 35 temas",
+    "tipo": "success"
+  },
+  {
+    "id": "log-035",
+    "timestamp": "2026-02-08T14:22:08Z",
+    "agente_id": "decodificador",
+    "accion": "ley_verificada",
+    "oposicion_id": "opo-027",
+    "mensaje": "Ley verificada: Ley 47/2003 (LGP) — sin cambios",
+    "tipo": "success"
+  },
+  {
+    "id": "log-036",
+    "timestamp": "2026-02-08T14:20:55Z",
+    "agente_id": "arqueologo",
+    "accion": "busqueda",
+    "oposicion_id": "opo-004",
+    "mensaje": "Buscando exámenes en archivo histórico BOE...",
+    "tipo": "info"
+  },
+  {
+    "id": "log-037",
+    "timestamp": "2026-02-08T14:18:33Z",
+    "agente_id": "censador",
+    "accion": "escaneo",
+    "oposicion_id": null,
+    "mensaje": "Portal de Castilla y León escaneado, 1 nueva oposición",
+    "tipo": "success"
+  },
+  {
+    "id": "log-038",
+    "timestamp": "2026-02-08T14:16:10Z",
+    "agente_id": "excavador",
+    "accion": "warning",
+    "oposicion_id": "opo-019",
+    "mensaje": "Advertencia: PDF de bases parcialmente corrupto, reintentando...",
+    "tipo": "warning"
+  },
+  {
+    "id": "log-039",
+    "timestamp": "2026-02-08T14:14:48Z",
+    "agente_id": "decodificador",
+    "accion": "vinculacion",
+    "oposicion_id": "opo-006",
+    "mensaje": "6 leyes vinculadas al tema 22 de Inspector de Hacienda",
+    "tipo": "success"
+  },
+  {
+    "id": "log-040",
+    "timestamp": "2026-02-08T14:12:25Z",
+    "agente_id": "arqueologo",
+    "accion": "examen_encontrado",
+    "oposicion_id": "opo-004",
+    "mensaje": "Examen encontrado: TAC 2023 Modelo A",
+    "tipo": "success"
+  }
+]
