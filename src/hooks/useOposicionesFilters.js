@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react'
-import oposicionesData from '@/data/oposiciones.json'
+import { useData } from '@/hooks/useData'
 
 export function useOposicionesFilters() {
+  const { oposiciones: oposicionesData } = useData()
   const [searchTerm, setSearchTerm] = useState('')
   const [filterAmbito, setFilterAmbito] = useState('Todos')
   const [filterGrupo, setFilterGrupo] = useState('Todos')
@@ -10,7 +11,7 @@ export function useOposicionesFilters() {
   // Get unique ambitos
   const ambitos = useMemo(() =>
     ['Todos', ...new Set(oposicionesData.map(o => o.ambito))],
-    []
+    [oposicionesData]
   )
 
   // Filter oposiciones
@@ -23,7 +24,7 @@ export function useOposicionesFilters() {
       const matchesState = filterState === 'Todos' || opo.pipeline_state === filterState
       return matchesSearch && matchesAmbito && matchesGrupo && matchesState
     })
-  }, [searchTerm, filterAmbito, filterGrupo, filterState])
+  }, [oposicionesData, searchTerm, filterAmbito, filterGrupo, filterState])
 
   return {
     // Filter values

@@ -1,8 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { AGENTS } from '@/constants/pipeline'
-import oposicionesData from '@/data/oposiciones.json'
+import { useData } from '@/hooks/useData'
 
 export default function AgentCards() {
+  const { oposiciones: oposicionesData } = useData()
   return (
     <div className="grid grid-cols-4 gap-4">
       {AGENTS.map(agent => {

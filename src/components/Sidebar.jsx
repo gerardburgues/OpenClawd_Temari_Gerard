@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'react-router-dom'
 import { AGENTS } from '@/constants/pipeline'
-import oposicionesData from '@/data/oposiciones.json'
+import { useData } from '@/hooks/useData'
 
 export default function Sidebar() {
   const location = useLocation()
+  const { oposiciones: oposicionesData } = useData()
 
   const agentsActive = oposicionesData.filter(o => o.agente_activo !== null).length
 

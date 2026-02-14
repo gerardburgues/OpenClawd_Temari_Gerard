@@ -1,18 +1,17 @@
 import { useMemo } from 'react'
-import oposicionesData from '@/data/oposiciones.json'
-import temarioData from '@/data/temario.json'
-import legislacionData from '@/data/legislacion.json'
-import examenesData from '@/data/examenes.json'
+import { useData } from '@/hooks/useData'
 
 export function useOposicionesStats() {
+  const { oposiciones, temario, legislacion, examenes } = useData()
+
   const stats = useMemo(() => {
-    const total = oposicionesData.length
-    const completas = oposicionesData.filter(o => o.pipeline_state === 'completa').length
-    const enProceso = oposicionesData.filter(o => o.agente_activo !== null).length
-    const totalTemas = temarioData.length
-    const totalLeyes = legislacionData.length
-    const totalExamenes = examenesData.length
-    const errores = oposicionesData.filter(o => o.pipeline_state === 'error').length
+    const total = oposiciones.length
+    const completas = oposiciones.filter(o => o.pipeline_state === 'completa').length
+    const enProceso = oposiciones.filter(o => o.agente_activo !== null).length
+    const totalTemas = temario.length
+    const totalLeyes = legislacion.length
+    const totalExamenes = examenes.length
+    const errores = oposiciones.filter(o => o.pipeline_state === 'error').length
 
     return {
       total,
@@ -23,7 +22,7 @@ export function useOposicionesStats() {
       totalExamenes,
       errores
     }
-  }, [])
+  }, [oposiciones, temario, legislacion, examenes])
 
   return stats
 }

@@ -4,8 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { PIPELINE_STATES, AGENTS, GRUPOS } from '@/constants/pipeline'
 import { useOposicionesFilters } from '@/hooks/useOposicionesFilters'
+import { useData } from '@/hooks/useData'
 import FilterBar from '@/components/dashboard/FilterBar'
-import oposicionesData from '@/data/oposiciones.json'
 
 export default function Pipeline() {
   const {
@@ -21,12 +21,14 @@ export default function Pipeline() {
     filteredOposiciones,
   } = useOposicionesFilters()
 
+  const { oposiciones: oposicionesData } = useData()
+
   const progressByState = useMemo(() => {
     return PIPELINE_STATES.slice(0, 7).map(state => ({
       ...state,
       count: oposicionesData.filter(o => o.pipeline_state === state.id).length
     }))
-  }, [])
+  }, [oposicionesData])
 
   return (
     <div className="p-8 space-y-6">

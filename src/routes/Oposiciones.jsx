@@ -5,11 +5,12 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { PIPELINE_STATES, GRUPOS } from '@/constants/pipeline'
 import { useOposicionesFilters } from '@/hooks/useOposicionesFilters'
+import { useData } from '@/hooks/useData'
 import FilterBar from '@/components/dashboard/FilterBar'
-import temarioData from '@/data/temario.json'
 
 export default function Oposiciones() {
   const [expandedRow, setExpandedRow] = useState(null)
+  const { temario: temarioData } = useData()
 
   const {
     searchTerm,
@@ -137,12 +138,14 @@ export default function Oposiciones() {
                           <span className="text-muted-foreground">Área:</span>{' '}
                           <span className="font-medium">{opo.area}</span>
                         </div>
-                        <div className="text-sm">
-                          <span className="text-muted-foreground">Pipeline iniciado:</span>{' '}
-                          <span className="font-medium font-mono">
-                            {new Date(opo.pipeline_started_at).toLocaleString('es-ES')}
-                          </span>
-                        </div>
+                        {(opo.pipeline_started_at || opo.created_at) && (
+                          <div className="text-sm">
+                            <span className="text-muted-foreground">Pipeline iniciado:</span>{' '}
+                            <span className="font-medium font-mono">
+                              {new Date(opo.pipeline_started_at || opo.created_at).toLocaleString('es-ES')}
+                            </span>
+                          </div>
+                        )}
                         {opo.error_msg && (
                           <div className="text-sm bg-destructive/10 border border-destructive/20 rounded p-2 mt-2">
                             <span className="text-destructive font-medium">⚠️ {opo.error_msg}</span>

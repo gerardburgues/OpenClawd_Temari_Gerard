@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { AGENTS, GRUPOS } from '@/constants/pipeline'
-import oposicionesData from '@/data/oposiciones.json'
+import { useData } from '@/hooks/useData'
 
 export default function Agentes() {
+  const { oposiciones: oposicionesData } = useData()
   return (
     <div className="p-8 space-y-6">
       <div>

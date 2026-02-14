@@ -4,14 +4,17 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { PIPELINE_STATES, AGENTS, GRUPOS } from '@/constants/pipeline'
-import oposicionesData from '@/data/oposiciones.json'
-import temarioData from '@/data/temario.json'
-import legislacionData from '@/data/legislacion.json'
-import convocatoriasData from '@/data/convocatorias.json'
-import examenesData from '@/data/examenes.json'
+import { useData } from '@/hooks/useData'
 
 export default function OposicionDetail() {
   const { id } = useParams()
+  const {
+    oposiciones: oposicionesData,
+    temario: temarioData,
+    legislacion: legislacionData,
+    convocatorias: convocatoriasData,
+    examenes: examenesData,
+  } = useData()
   const oposicion = oposicionesData.find(o => o.id === id)
 
   if (!oposicion) {
@@ -262,47 +265,57 @@ export default function OposicionDetail() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       <div>
                         <div className="text-sm text-muted-foreground">Plazas totales</div>
-                        <div className="text-2xl font-bold font-mono">{conv.plazas_total}</div>
-                        <div className="text-xs text-muted-foreground mt-1">
-                          {conv.plazas_libre} libre + {conv.plazas_interna} interna
-                        </div>
+                        <div className="text-2xl font-bold font-mono">{conv.plazas_total ?? '—'}</div>
+                        {(conv.plazas_libre != null || conv.plazas_interna != null) && (
+                          <div className="text-xs text-muted-foreground mt-1">
+                            {conv.plazas_libre ?? '?'} libre + {conv.plazas_interna ?? '?'} interna
+                          </div>
+                        )}
                       </div>
                       <div>
                         <div className="text-sm text-muted-foreground">Fecha examen</div>
                         <div className="text-lg font-medium">
-                          {new Date(conv.fecha_examen).toLocaleDateString('es-ES', {
-                            day: 'numeric',
-                            month: 'long',
-                            year: 'numeric'
-                          })}
+                          {conv.fecha_examen
+                            ? new Date(conv.fecha_examen).toLocaleDateString('es-ES', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                              })
+                            : '—'}
                         </div>
                       </div>
                       <div>
                         <div className="text-sm text-muted-foreground">Nota corte teórico</div>
-                        <div className="text-2xl font-bold font-mono">{conv.nota_corte_teorico}</div>
+                        <div className="text-2xl font-bold font-mono">{conv.nota_corte_teorico ?? '—'}</div>
                       </div>
                       <div>
                         <div className="text-sm text-muted-foreground">Ratio opos/plaza</div>
-                        <div className="text-2xl font-bold font-mono">{conv.ratio_opositores_plaza}</div>
+                        <div className="text-2xl font-bold font-mono">{conv.ratio_opositores_plaza ?? '—'}</div>
                       </div>
                     </div>
                     <div className="mt-4 flex items-center gap-4 text-sm">
-                      <div>
-                        <span className="text-muted-foreground">Publicación:</span>{' '}
-                        {new Date(conv.fecha_publicacion).toLocaleDateString('es-ES')}
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">Fin plazo:</span>{' '}
-                        {new Date(conv.fecha_fin_plazo).toLocaleDateString('es-ES')}
-                      </div>
-                      <a
-                        href={conv.url_boe}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline ml-auto"
-                      >
-                        Ver en BOE →
-                      </a>
+                      {conv.fecha_publicacion_boe && (
+                        <div>
+                          <span className="text-muted-foreground">Publicación:</span>{' '}
+                          {new Date(conv.fecha_publicacion_boe).toLocaleDateString('es-ES')}
+                        </div>
+                      )}
+                      {conv.fecha_fin_plazo && (
+                        <div>
+                          <span className="text-muted-foreground">Fin plazo:</span>{' '}
+                          {new Date(conv.fecha_fin_plazo).toLocaleDateString('es-ES')}
+                        </div>
+                      )}
+                      {conv.url_boe && (
+                        <a
+                          href={conv.url_boe}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline ml-auto"
+                        >
+                          Ver en BOE →
+                        </a>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -352,22 +365,44 @@ export default function OposicionDetail() {
                                 {examen.num_preguntas} preguntas · Fuente: {examen.fuente}
                               </div>
                               <div className="flex gap-2">
-                                <a
-                                  href={examen.pdf_examen_url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-xs text-blue-500 hover:underline"
-                                >
-                                  📄 PDF Examen
-                                </a>
-                                <a
-                                  href={examen.pdf_plantilla_url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-xs text-blue-500 hover:underline"
-                                >
-                                  📄 PDF Plantilla
-                                </a>
+                                {examen.pdf_examen_url ? (
+                                  <a
+                                    href={examen.pdf_examen_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xs text-blue-500 hover:underline"
+                                  >
+                                    📄 PDF Examen
+                                  </a>
+                                ) : (
+                                  <a
+                                    href={`https://www.google.com/search?q=${encodeURIComponent(oposicion.nombre + ' examen tipo test filetype:pdf')}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xs text-muted-foreground hover:text-foreground hover:underline"
+                                  >
+                                    🔍 Buscar examen
+                                  </a>
+                                )}
+                                {examen.pdf_plantilla_url ? (
+                                  <a
+                                    href={examen.pdf_plantilla_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xs text-blue-500 hover:underline"
+                                  >
+                                    📄 PDF Plantilla
+                                  </a>
+                                ) : (
+                                  <a
+                                    href={`https://www.google.com/search?q=${encodeURIComponent(oposicion.nombre + ' plantilla respuestas filetype:pdf')}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xs text-muted-foreground hover:text-foreground hover:underline"
+                                  >
+                                    🔍 Buscar plantilla
+                                  </a>
+                                )}
                               </div>
                             </div>
                           </div>

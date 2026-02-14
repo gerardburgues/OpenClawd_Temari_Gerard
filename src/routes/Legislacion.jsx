@@ -4,12 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import legislacionData from '@/data/legislacion.json'
-import temarioData from '@/data/temario.json'
-import oposicionesData from '@/data/oposiciones.json'
 import { GRUPOS } from '@/constants/pipeline'
+import { useData } from '@/hooks/useData'
 
 export default function Legislacion() {
+  const {
+    legislacion: legislacionData,
+    temario: temarioData,
+    oposiciones: oposicionesData,
+  } = useData()
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState('veces_referenciada') // or 'referencia'
   const [sortOrder, setSortOrder] = useState('desc')

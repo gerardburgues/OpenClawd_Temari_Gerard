@@ -1,8 +1,9 @@
 import { useLocation, Link } from 'react-router-dom'
-import oposicionesData from '@/data/oposiciones.json'
+import { useData } from '@/hooks/useData'
 
 export default function Header() {
   const location = useLocation()
+  const { oposiciones: oposicionesData, lastUpdate } = useData()
 
   const getBreadcrumbs = () => {
     const path = location.pathname
@@ -75,11 +76,18 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <div className={`w-2 h-2 rounded-full ${pipelineActive ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`} />
-          <span className="text-xs font-medium font-mono">
-            {pipelineActive ? 'Pipeline activo' : 'Pipeline en espera'}
-          </span>
+        <div className="flex items-center gap-4">
+          {lastUpdate && (
+            <span className="text-xs text-muted-foreground font-mono">
+              {lastUpdate.toLocaleTimeString('es-ES')}
+            </span>
+          )}
+          <div className="flex items-center gap-2">
+            <div className={`w-2 h-2 rounded-full ${pipelineActive ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`} />
+            <span className="text-xs font-medium font-mono">
+              {pipelineActive ? 'Pipeline activo' : 'Pipeline en espera'}
+            </span>
+          </div>
         </div>
       </div>
     </header>

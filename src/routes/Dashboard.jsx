@@ -4,15 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { PIPELINE_STATES, AGENTS } from '@/constants/pipeline'
 import { useOposicionesStats } from '@/hooks/useOposicionesStats'
+import { useData } from '@/hooks/useData'
 import AgentCards from '@/components/dashboard/AgentCards'
 import StatsCards from '@/components/dashboard/StatsCards'
-import oposicionesData from '@/data/oposiciones.json'
-import activityLogData from '@/data/activity-log.json'
 
 export default function Dashboard() {
   const [showActivityLog, setShowActivityLog] = useState(true)
   const [activityFilter, setActivityFilter] = useState([])
 
+  const { oposiciones: oposicionesData, activityLog: activityLogData } = useData()
   const stats = useOposicionesStats()
 
   // Calculate progress by state
@@ -21,13 +21,13 @@ export default function Dashboard() {
       ...state,
       count: oposicionesData.filter(o => o.pipeline_state === state.id).length
     }))
-  }, [])
+  }, [oposicionesData])
 
   // Filter activity log
   const filteredActivityLog = useMemo(() => {
     if (activityFilter.length === 0) return activityLogData
     return activityLogData.filter(log => activityFilter.includes(log.agente_id))
-  }, [activityFilter])
+  }, [activityLogData, activityFilter])
 
   const toggleActivityFilter = (agentId) => {
     setActivityFilter(prev =>
