@@ -628,3 +628,18 @@ All calls go through `openrouter_service.py` with Langfuse `@observe` tracing.
 
 > **Source:** Notion workspace — Typed/Temarios and related pages
 > **Last extracted:** 2026-02-13
+
+---
+
+## Temarios Loaded Into Backend
+
+### ETGOA - Escala Técnica de Gestión de Organismos Autónomos (A2)
+- **ID:** c8468432-82e4-41d0-bbe2-fd3a12fc01ff
+- **Status:** ✅ COMPLETED (2025-02-15)
+- **Total temas:** 173
+- **Bloques:**
+  - Materias Comunes: 38 temas
+  - Específico I - Derecho Constitucional y Administrativo: 45 temas
+  - Específico II - Economía y Administración Financiera: 45 temas
+  - Específico III - Recursos Humanos: 45 temas
+- **Source:** BOE convocatoria (Anexo II)
