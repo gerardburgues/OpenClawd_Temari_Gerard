@@ -23,8 +23,8 @@ All agents work **concurrently**. The Censador keeps discovering while the Excav
 
 ## API (all agents use this)
 
-**Base URL:** `http://localhost:8001`
-**Docs:** http://localhost:8001/docs
+**Base URL:** `http://localhost:8005`
+**Docs:** http://localhost:8005/docs
 
 ### Endpoints
 
@@ -78,7 +78,7 @@ Launch **all 4 agents in parallel** using the Task tool. Each agent runs as a ba
 4. Launch Arqueólogo agent (background)   → polls for "leyes_ok", finds exams
 ```
 
-Monitor progress by checking: `curl http://localhost:8001/oposiciones/count?pipeline_state=completa`
+Monitor progress by checking: `curl http://localhost:8005/oposiciones/count?pipeline_state=completa`
 
 ---
 
@@ -289,7 +289,7 @@ If any agent fails on an oposicion:
 ## Tech context
 
 - **Database:** PostgreSQL at localhost:5432 (db: temarios, user: typed)
-- **API:** FastAPI at localhost:8001
+- **API:** FastAPI at localhost:8005
 - **Frontend:** React + Vite at localhost:5173 (reads from same API)
 - All communication goes through the REST API. NEVER write to DB directly.
 - Use `curl` via Bash tool for all API calls.

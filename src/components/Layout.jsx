@@ -23,7 +23,7 @@ export default function Layout() {
         <div className="text-center space-y-4 max-w-md">
           <p className="text-lg font-bold text-destructive">Error de conexion</p>
           <p className="text-sm text-muted-foreground">{error}</p>
-          <p className="text-xs text-muted-foreground font-mono">Asegurate de que la API esta corriendo en localhost:8001</p>
+          <p className="text-xs text-muted-foreground font-mono">Asegurate de que la API esta corriendo en localhost:8005</p>
         </div>
       </div>
     )

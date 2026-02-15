@@ -20,7 +20,7 @@ services:
     build: ./api
     restart: unless-stopped
     ports:
-      - "8001:8000"
+      - "8005:8000"
     environment:
       DATABASE_URL: postgresql+asyncpg://typed:typed_dev@db:5432/temarios
     depends_on:
