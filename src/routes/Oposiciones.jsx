@@ -64,8 +64,8 @@ export default function Oposiciones() {
           </div>
           {/* Table Rows */}
           {filteredOposiciones.map(opo => {
-            const state = PIPELINE_STATES.find(s => s.id === opo.pipeline_state)
-            const grupo = GRUPOS[opo.grupo]
+            const state = PIPELINE_STATES.find(s => s.id === opo.pipeline_state) || { id: opo.pipeline_state, label: opo.pipeline_state, icon: '❓', color: '#6e7681' }
+            const grupo = GRUPOS[opo.grupo] || { color: '#6e7681', bg: 'rgba(110,118,129,0.12)' }
             const temasCount = temarioData.filter(t => t.oposicion_id === opo.id).length
             const progress = getProgressPercentage(opo.pipeline_state)
             const isExpanded = expandedRow === opo.id
