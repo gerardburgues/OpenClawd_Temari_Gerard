@@ -9,7 +9,7 @@ import {
 
 export const DataContext = createContext(null)
 
-const REFRESH_INTERVAL = 30_000
+const REFRESH_INTERVAL = 300_000
 
 export function DataProvider({ children }) {
   const [oposiciones, setOposiciones] = useState([])
@@ -23,17 +23,16 @@ export function DataProvider({ children }) {
 
   const refresh = useCallback(async () => {
     try {
-      const [opoRes, temRes, legRes, convRes, exRes] = await Promise.all([
-        getOposiciones(),
-        getTemario(),
-        getLegislacion(),
-        getConvocatorias(),
-        getExamenes(),
-      ])
+      // Sequential fetches to avoid overwhelming serverless backend
+      const opoRes = await getOposiciones()
       setOposiciones(opoRes)
+      const temRes = await getTemario()
       setTemario(temRes)
+      const legRes = await getLegislacion()
       setLegislacion(legRes)
+      const convRes = await getConvocatorias()
       setConvocatorias(convRes)
+      const exRes = await getExamenes()
       setExamenes(exRes)
       setError(null)
       setLastUpdate(new Date())

@@ -1,11 +1,25 @@
 const BASE_URL = import.meta.env.VITE_API_URL || '/api'
 
-async function fetchJSON(endpoint) {
-  const res = await fetch(`${BASE_URL}${endpoint}`)
-  if (!res.ok) {
-    throw new Error(`API error ${res.status}: ${endpoint}`)
+async function fetchJSON(endpoint, retries = 2) {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const res = await fetch(`${BASE_URL}${endpoint}`)
+      if (!res.ok) {
+        if (i < retries && res.status >= 500) {
+          await new Promise(r => setTimeout(r, 1000 * (i + 1)))
+          continue
+        }
+        throw new Error(`API error ${res.status}: ${endpoint}`)
+      }
+      return res.json()
+    } catch (err) {
+      if (i < retries && err.name !== 'AbortError') {
+        await new Promise(r => setTimeout(r, 1000 * (i + 1)))
+        continue
+      }
+      throw err
+    }
   }
-  return res.json()
 }
 
 async function fetchAll(endpoint, maxLimit) {
