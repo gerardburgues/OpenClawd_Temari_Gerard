@@ -6,14 +6,15 @@ from sqlalchemy.pool import NullPool
 
 from app.config import DATABASE_URL
 
-# Append statement_cache_size=0 for PgBouncer transaction mode compatibility
+# For PgBouncer transaction mode: disable prepared statement caching
+_is_serverless = os.getenv("SKIP_CREATE_TABLES")
 _sep = "&" if "?" in DATABASE_URL else "?"
-_url = DATABASE_URL + _sep + "prepared_statement_cache_size=0" if os.getenv("SKIP_CREATE_TABLES") else DATABASE_URL
+_url = DATABASE_URL + _sep + "prepared_statement_cache_size=0&statement_cache_size=0" if _is_serverless else DATABASE_URL
 
 engine = create_async_engine(
     _url,
     echo=False,
-    poolclass=NullPool,
+    poolclass=NullPool if _is_serverless else None,
 )
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
