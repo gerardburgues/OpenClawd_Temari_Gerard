@@ -1,17 +1,19 @@
+import os
+
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.pool import NullPool
 
 from app.config import DATABASE_URL
 
+# Append statement_cache_size=0 for PgBouncer transaction mode compatibility
+_sep = "&" if "?" in DATABASE_URL else "?"
+_url = DATABASE_URL + _sep + "prepared_statement_cache_size=0" if os.getenv("SKIP_CREATE_TABLES") else DATABASE_URL
+
 engine = create_async_engine(
-    DATABASE_URL,
+    _url,
     echo=False,
     poolclass=NullPool,
-    connect_args={
-        "statement_cache_size": 0,
-        "prepared_statement_cache_size": 0,
-    },
 )
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
