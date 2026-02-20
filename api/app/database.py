@@ -8,12 +8,18 @@ from app.config import DATABASE_URL
 
 _is_serverless = os.getenv("SKIP_CREATE_TABLES")
 
-_engine_kwargs = dict(echo=False)
 if _is_serverless:
-    _engine_kwargs["poolclass"] = NullPool
-    _engine_kwargs["connect_args"] = {"statement_cache_size": 0}
-
-engine = create_async_engine(DATABASE_URL, **_engine_kwargs)
+    # Serverless + Supabase PgBouncer: use psycopg driver (no prepared stmt issues)
+    _url = DATABASE_URL.replace("postgresql+asyncpg://", "postgresql+psycopg://")
+    engine = create_async_engine(
+        _url,
+        echo=False,
+        poolclass=NullPool,
+        connect_args={"prepare_threshold": 0},
+    )
+else:
+    # Local dev: asyncpg direct to PostgreSQL
+    engine = create_async_engine(DATABASE_URL, echo=False)
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 
