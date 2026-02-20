@@ -18,7 +18,7 @@ async def list_oposiciones(
     grupo: str | None = None,
     area: str | None = None,
     skip: int = Query(0, ge=0),
-    limit: int = Query(50, ge=1, le=200),
+    limit: int = Query(50, ge=1, le=1000),
     db: AsyncSession = Depends(get_db),
 ):
     q = select(Oposicion)

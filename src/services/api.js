@@ -1,5 +1,4 @@
 const BASE_URL = import.meta.env.VITE_API_URL || '/api'
-const PAGE_SIZE = 200
 
 async function fetchJSON(endpoint) {
   const res = await fetch(`${BASE_URL}${endpoint}`)
@@ -9,7 +8,7 @@ async function fetchJSON(endpoint) {
   return res.json()
 }
 
-async function fetchAll(endpoint, maxLimit = PAGE_SIZE) {
+async function fetchAll(endpoint, maxLimit) {
   const separator = endpoint.includes('?') ? '&' : '?'
   let all = []
   let skip = 0
@@ -24,21 +23,21 @@ async function fetchAll(endpoint, maxLimit = PAGE_SIZE) {
 }
 
 export async function getOposiciones() {
-  return fetchAll('/oposiciones/')
+  return fetchAll('/oposiciones/', 1000)
 }
 
 export async function getTemario() {
-  return fetchAll('/temario/', 500)
+  return fetchAll('/temario/', 5000)
 }
 
 export async function getLegislacion() {
-  return fetchAll('/legislacion/')
+  return fetchAll('/legislacion/', 1000)
 }
 
 export async function getConvocatorias() {
-  return fetchAll('/convocatorias/')
+  return fetchAll('/convocatorias/', 1000)
 }
 
 export async function getExamenes() {
-  return fetchAll('/examenes/')
+  return fetchAll('/examenes/', 1000)
 }
