@@ -1,4 +1,4 @@
-const BASE_URL = '/api'
+const BASE_URL = import.meta.env.VITE_API_URL || '/api'
 const PAGE_SIZE = 200
 
 async function fetchJSON(endpoint) {

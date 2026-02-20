@@ -1,3 +1,4 @@
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -17,6 +18,8 @@ async def lifespan(app: FastAPI):
     yield
 
 
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "*").split(",")
+
 app = FastAPI(
     title="Typed Temarios API",
     description="API for the Typed oposiciones catalog — used by OpenClaw agents",
@@ -26,7 +29,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
