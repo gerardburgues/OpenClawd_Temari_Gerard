@@ -13,9 +13,12 @@ import app.models  # noqa: F401
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-    yield
+    if os.getenv("SKIP_CREATE_TABLES"):
+        yield
+    else:
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        yield
 
 
 allowed_origins = os.getenv("ALLOWED_ORIGINS", "*").split(",")
